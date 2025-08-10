@@ -1,0 +1,1454 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conhecimento Apurado - Semaglutida & Tirzepatida</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: #f3f4f6;
+            line-height: 1.6;
+        }
+        
+        .header {
+            background: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .header-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+        
+        .logo-section {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-icon {
+            width: 2rem;
+            height: 2rem;
+            background: #2563eb;
+            border-radius: 4px;
+            margin-right: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .logo-text h1 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #111827;
+        }
+        
+        .logo-text p {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+        
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .search-container {
+            position: relative;
+        }
+        
+        .search-input {
+            padding-left: 2.5rem;
+            padding-right: 1rem;
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            width: 300px;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            ring: 2px;
+            ring-color: #2563eb;
+            border-color: transparent;
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 0.75rem;
+            top: 0.75rem;
+            width: 1.25rem;
+            height: 1.25rem;
+            color: #9ca3af;
+        }
+        
+        .update-info {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+        
+        .main-container {
+            display: flex;
+            min-height: calc(100vh - 80px);
+        }
+        
+        .sidebar {
+            width: 16rem;
+            background: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            min-height: 100%;
+        }
+        
+        .sidebar-content {
+            padding: 1rem;
+        }
+        
+        .nav-button {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-radius: 0.5rem;
+            transition: all 0.2s;
+            border: none;
+            background: none;
+            cursor: pointer;
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+        
+        .nav-button:hover {
+            background-color: #f3f4f6;
+        }
+        
+        .nav-button.active {
+            background-color: #2563eb;
+            color: white;
+        }
+        
+        .nav-icon {
+            width: 1.25rem;
+            height: 1.25rem;
+            margin-right: 0.75rem;
+        }
+        
+        .content {
+            flex: 1;
+            padding: 1.5rem;
+        }
+        
+        .section {
+            display: none;
+        }
+        
+        .section.active {
+            display: block;
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            color: #111827;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .stat-card {
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .stat-card.blue { background-color: #2563eb; }
+        .stat-card.green { background-color: #059669; }
+        .stat-card.purple { background-color: #7c3aed; }
+        .stat-card.orange { background-color: #ea580c; }
+        
+        .stat-info p:first-child {
+            opacity: 0.8;
+            font-size: 0.875rem;
+        }
+        
+        .stat-info p:last-child {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .stat-icon {
+            width: 2rem;
+            height: 2rem;
+            opacity: 0.7;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .card-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #111827;
+            display: flex;
+            align-items: center;
+        }
+        
+        .card-icon {
+            width: 1.25rem;
+            height: 1.25rem;
+            margin-right: 0.5rem;
+        }
+        
+        .grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+        
+        .grid-2 {
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        }
+        
+        .grid-3 {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+        
+        .grid-4 {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+        
+        .progress-bar {
+            width: 100%;
+            background-color: #e5e7eb;
+            border-radius: 9999px;
+            height: 0.5rem;
+            margin-top: 0.25rem;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            border-radius: 9999px;
+            transition: width 0.3s;
+        }
+        
+        .progress-fill.blue { background-color: #2563eb; }
+        .progress-fill.green { background-color: #059669; }
+        .progress-fill.orange { background-color: #ea580c; }
+        
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        
+        .table th,
+        .table td {
+            border: 1px solid #e5e7eb;
+            padding: 0.75rem;
+            text-align: left;
+        }
+        
+        .table th {
+            background-color: #f9fafb;
+            font-weight: 600;
+            color: #374151;
+        }
+        
+        .table tr:hover {
+            background-color: #f9fafb;
+        }
+        
+        .badge {
+            padding: 0.25rem 0.5rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        
+        .badge.green {
+            background-color: #d1fae5;
+            color: #065f46;
+        }
+        
+        .badge.blue {
+            background-color: #dbeafe;
+            color: #1e40af;
+        }
+        
+        .badge.red {
+            background-color: #fee2e2;
+            color: #991b1b;
+        }
+        
+        .badge.orange {
+            background-color: #fed7aa;
+            color: #9a3412;
+        }
+        
+        .badge.yellow {
+            background-color: #fef3c7;
+            color: #92400e;
+        }
+        
+        .badge.gray {
+            background-color: #f3f4f6;
+            color: #374151;
+        }
+        
+        .drug-selector {
+            margin-bottom: 1rem;
+        }
+        
+        .drug-selector select {
+            border: 1px solid #d1d5db;
+            border-radius: 0.5rem;
+            padding: 0.5rem 0.75rem;
+            font-size: 0.875rem;
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .highlight-box {
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            margin-top: 0.5rem;
+            font-size: 0.875rem;
+        }
+        
+        .highlight-box.blue {
+            background-color: #eff6ff;
+            color: #1e40af;
+            border-left: 4px solid #2563eb;
+        }
+        
+        .highlight-box.green {
+            background-color: #f0fdf4;
+            color: #166534;
+            border-left: 4px solid #16a34a;
+        }
+        
+        .highlight-box.red {
+            background-color: #fef2f2;
+            color: #991b1b;
+            border-left: 4px solid #dc2626;
+        }
+        
+        .highlight-box.orange {
+            background-color: #fff7ed;
+            color: #9a3412;
+            border-left: 4px solid #ea580c;
+        }
+        
+        .list {
+            list-style-type: disc;
+            list-style-position: inside;
+            color: #6b7280;
+        }
+        
+        .list li {
+            margin-bottom: 0.25rem;
+        }
+        
+        .border-left {
+            border-left: 4px solid;
+            padding-left: 1rem;
+        }
+        
+        .border-left.blue { border-left-color: #2563eb; }
+        .border-left.green { border-left-color: #16a34a; }
+        .border-left.purple { border-left-color: #7c3aed; }
+        .border-left.red { border-left-color: #dc2626; }
+        
+        .alert-box {
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .flex {
+            display: flex;
+        }
+        
+        .items-center {
+            align-items: center;
+        }
+        
+        .items-start {
+            align-items: flex-start;
+        }
+        
+        .justify-between {
+            justify-content: space-between;
+        }
+        
+        .gap-2 {
+            gap: 0.5rem;
+        }
+        
+        .gap-4 {
+            gap: 1rem;
+        }
+        
+        .mt-2 {
+            margin-top: 0.5rem;
+        }
+        
+        .mb-2 {
+            margin-bottom: 0.5rem;
+        }
+        
+        .mb-4 {
+            margin-bottom: 1rem;
+        }
+        
+        .text-sm {
+            font-size: 0.875rem;
+        }
+        
+        .text-xs {
+            font-size: 0.75rem;
+        }
+        
+        .font-bold {
+            font-weight: 700;
+        }
+        
+        .font-semibold {
+            font-weight: 600;
+        }
+        
+        .text-gray-600 {
+            color: #4b5563;
+        }
+        
+        .text-gray-700 {
+            color: #374151;
+        }
+        
+        .text-blue-600 {
+            color: #2563eb;
+        }
+        
+        .text-green-600 {
+            color: #16a34a;
+        }
+        
+        .text-red-600 {
+            color: #dc2626;
+        }
+        
+        .bg-gray-50 {
+            background-color: #f9fafb;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            .main-container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                order: 2;
+            }
+            
+            .content {
+                order: 1;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .search-input {
+                width: 100%;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .grid-2,
+            .grid-3,
+            .grid-4 {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo-icon">⚡</div>
+                <div class="logo-text">
+                    <h1>Conhecimento Apurado</h1>
+                    <p>Sistema de Intelligence - Semaglutida & Tirzepatida</p>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="search-container">
+                    <div class="search-icon">🔍</div>
+                    <input type="text" class="search-input" placeholder="Buscar informações..." id="searchInput">
+                </div>
+                <div class="update-info">
+                    Última atualização: <span id="currentDate"></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="sidebar-content">
+                <button class="nav-button active" data-section="dashboard">
+                    <span class="nav-icon">📊</span>
+                    Dashboard
+                </button>
+                <button class="nav-button" data-section="products">
+                    <span class="nav-icon">📋</span>
+                    Produtos & Tratamentos
+                </button>
+                <button class="nav-button" data-section="clinical">
+                    <span class="nav-icon">🏥</span>
+                    Contexto Clínico
+                </button>
+                <button class="nav-button" data-section="knowledge">
+                    <span class="nav-icon">🎯</span>
+                    Conhecimentos Complementares
+                </button>
+                <button class="nav-button" data-section="competitive">
+                    <span class="nav-icon">📈</span>
+                    Análise Competitiva
+                </button>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="content">
+            <!-- Dashboard Section -->
+            <div id="dashboard" class="section active">
+                <h2 class="section-title">Dashboard Executivo</h2>
+                
+                <div class="stats-grid">
+                    <div class="stat-card blue">
+                        <div class="stat-info">
+                            <p>Market Share</p>
+                            <p>90%</p>
+                        </div>
+                        <div class="stat-icon">📈</div>
+                    </div>
+                    <div class="stat-card green">
+                        <div class="stat-info">
+                            <p>Pacientes Tratados</p>
+                            <p>2.5M+</p>
+                        </div>
+                        <div class="stat-icon">👥</div>
+                    </div>
+                    <div class="stat-card purple">
+                        <div class="stat-info">
+                            <p>Receita Mensal</p>
+                            <p>R$ 1.2B</p>
+                        </div>
+                        <div class="stat-icon">💰</div>
+                    </div>
+                    <div class="stat-card orange">
+                        <div class="stat-info">
+                            <p>Eficácia Média</p>
+                            <p>18%</p>
+                        </div>
+                        <div class="stat-icon">⚡</div>
+                    </div>
+                </div>
+
+                <div class="grid grid-2">
+                    <div class="card">
+                        <h3 class="card-title">
+                            <span class="card-icon">📊</span>
+                            Comparação de Eficácia
+                        </h3>
+                        <div style="margin-bottom: 1rem;">
+                            <div class="flex justify-between text-sm mb-2">
+                                <span>Tirzepatida 15mg</span>
+                                <span class="font-bold">25%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill blue" style="width: 100%;"></div>
+                            </div>
+                        </div>
+                        <div style="margin-bottom: 1rem;">
+                            <div class="flex justify-between text-sm mb-2">
+                                <span>Semaglutida 2.4mg</span>
+                                <span class="font-bold">17%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill green" style="width: 68%;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-sm mb-2">
+                                <span>Liraglutida 3mg</span>
+                                <span class="font-bold">8%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill orange" style="width: 32%;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3 class="card-title">
+                            <span class="card-icon">🥧</span>
+                            Market Share por Fabricante
+                        </h3>
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+                            <div style="display: flex; align-items: center;">
+                                <div style="width: 1rem; height: 1rem; background-color: #2563eb; border-radius: 2px; margin-right: 0.75rem;"></div>
+                                <span>Novo Nordisk</span>
+                            </div>
+                            <span class="font-semibold">65%</span>
+                        </div>
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+                            <div style="display: flex; align-items: center;">
+                                <div style="width: 1rem; height: 1rem; background-color: #16a34a; border-radius: 2px; margin-right: 0.75rem;"></div>
+                                <span>Eli Lilly</span>
+                            </div>
+                            <span class="font-semibold">25%</span>
+                        </div>
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+                            <div style="display: flex; align-items: center;">
+                                <div style="width: 1rem; height: 1rem; background-color: #ea580c; border-radius: 2px; margin-right: 0.75rem;"></div>
+                                <span>EMS</span>
+                            </div>
+                            <span class="font-semibold">8%</span>
+                        </div>
+                        <div style="display: flex; align-items: center; justify-content: space-between;">
+                            <div style="display: flex; align-items: center;">
+                                <div style="width: 1rem; height: 1rem; background-color: #6b7280; border-radius: 2px; margin-right: 0.75rem;"></div>
+                                <span>Outros</span>
+                            </div>
+                            <span class="font-semibold">2%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Products Section -->
+            <div id="products" class="section">
+                <div class="section-header">
+                    <h2 class="section-title">Produtos e Tratamentos</h2>
+                    <div class="drug-selector">
+                        <select id="drugSelector">
+                            <option value="both">Ambos</option>
+                            <option value="semaglutida">Semaglutida</option>
+                            <option value="tirzepatida">Tirzepatida</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grid grid-2" id="drugCards">
+                    <div class="card" data-drug="semaglutida">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-xl font-semibold text-blue-600">Semaglutida</h3>
+                            <span class="badge green">Líder de Mercado</span>
+                        </div>
+                        <div style="margin-bottom: 1rem;">
+                            <h4 class="font-semibold text-gray-700">Mecanismo de Ação</h4>
+                            <p class="text-gray-600">Agonista seletivo do receptor GLP-1. Aumenta secreção de insulina dependente de glicose, reduz glucagon e retarda esvaziamento gástrico.</p>
+                        </div>
+                        <div style="margin-bottom: 1rem;">
+                            <h4 class="font-semibold text-gray-700">Posologia e Administração</h4>
+                            <ul class="list text-gray-600">
+                                <li>Injetável: 1x/semana (0,25mg → 2,4mg)</li>
+                                <li>Oral (Rybelsus): 1x/dia (3mg → 14mg)</li>
+                                <li>Aplicação subcutânea: abdome, coxa ou braço</li>
+                            </ul>
+                        </div>
+                        <div style="margin-bottom: 1rem;">
+                            <h4 class="font-semibold text-gray-700">Indicações Aprovadas</h4>
+                            <ul class="list text-gray-600">
+                                <li>Diabetes mellitus tipo 2</li>
+                                <li>Obesidade (IMC ≥30) ou sobrepeso (IMC ≥27) com comorbidades</li>
+                                <li>Redução de risco cardiovascular</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-700">Resultados Clínicos</h4>
+                            <ul class="list text-gray-600">
+                                <li>Redução HbA1c: até 1,9%</li>
+                                <li>Perda de peso: 10-17% do peso corporal</li>
+                                <li>Redução risco CV: 26% (SUSTAIN-6)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="card" data-drug="tirzepatida">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-xl font-semibold text-green-600">Tirzepatida</h3>
+                            <span class="badge blue">Mais Potente</span>
+                        </div>
+                        <div style="margin-bottom: 1rem;">
+                            <h4 class="font-semibold text-gray-700">Mecanismo de Ação</h4>
+                            <p class="text-gray-600">Agonista duplo dos receptores GLP-1 e GIP. Ação sinérgica potencializa controle glicêmico e perda de peso.</p>
+                        </div>
+                        <div style="margin-bottom: 1rem;">
+                            <h4 class="font-semibold text-gray-700">Posologia e Administração</h4>
+                            <ul class="list text-gray-600">
+                                <li>Injetável: 1x/semana (2,5mg → 15mg)</li>
+                                <li>Escalação: 2,5mg por 4 semanas, depois 5mg</li>
+                                <li>Aumentos de 2,5mg a cada 4+ semanas conforme tolerância</li>
+                            </ul>
+                        </div>
+                        <div style="margin-bottom: 1rem;">
+                            <h4 class="font-semibold text-gray-700">Indicações Aprovadas</h4>
+                            <ul class="list text-gray-600">
+                                <li>Diabetes mellitus tipo 2 (Brasil)</li>
+                                <li>Obesidade (EUA, Europa - off-label no Brasil)</li>
+                                <li>Apneia do sono + obesidade (EUA)</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-700">Resultados Clínicos</h4>
+                            <ul class="list text-gray-600">
+                                <li>Redução HbA1c: até 2,3%</li>
+                                <li>Perda de peso: 15-25% do peso corporal</li>
+                                <li>Superior à semaglutida em ambos os desfechos</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 class="card-title">Protocolos Médicos Atuais</h3>
+                    <div class="grid grid-2">
+                        <div>
+                            <h4 class="font-semibold text-blue-600 mb-2">Diabetes Tipo 2</h4>
+                            <ol style="list-style-type: decimal; list-style-position: inside; color: #6b7280;">
+                                <li>Metformina como primeira linha</li>
+                                <li>Agonistas GLP-1 se HbA1c >7% ou necessidade perda peso</li>
+                                <li>Tirzepatida preferível se HbA1c >8% ou obesidade significativa</li>
+                                <li>Combinação com insulina em casos complexos</li>
+                            </ol>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-green-600 mb-2">Obesidade</h4>
+                            <ol style="list-style-type: decimal; list-style-position: inside; color: #6b7280;">
+                                <li>Modificação estilo vida por 3-6 meses</li>
+                                <li>Agonistas GLP-1 se IMC ≥30 ou ≥27 com comorbidades</li>
+                                <li>Tirzepatida para casos refratários ou perda >20%</li>
+                                <li>Cirurgia bariátrica se farmacoterapia insuficiente</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Clinical Section -->
+            <div id="clinical" class="section">
+                <h2 class="section-title">Contexto Clínico</h2>
+                
+                <div class="card">
+                    <h3 class="card-title">Estudos Clínicos Pivotais</h3>
+                    <div style="overflow-x: auto;">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Estudo</th>
+                                    <th>Medicamento</th>
+                                    <th>Duração</th>
+                                    <th>Pacientes</th>
+                                    <th>HbA1c</th>
+                                    <th>Perda de Peso</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="font-semibold">SURPASS-2</td>
+                                    <td>Tirzepatida vs Semaglutida</td>
+                                    <td>40 semanas</td>
+                                    <td>1.878</td>
+                                    <td>Tirzepatida superior (-2,3% vs -1,9%)</td>
+                                    <td>Tirzepatida: 11,2% vs Semaglutida: 5,7%</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-semibold">SURMOUNT-1</td>
+                                    <td>Tirzepatida</td>
+                                    <td>72 semanas</td>
+                                    <td>2.539</td>
+                                    <td>-2,07%</td>
+                                    <td>21,9% (dose 15mg)</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-semibold">STEP-1</td>
+                                    <td>Semaglutida</td>
+                                    <td>68 semanas</td>
+                                    <td>1.961</td>
+                                    <td>-1,5%</td>
+                                    <td>14,9% (dose 2,4mg)</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-semibold">SURMOUNT-5</td>
+                                    <td>Tirzepatida vs Semaglutida</td>
+                                    <td>72 semanas</td>
+                                    <td>700</td>
+                                    <td>Comparável</td>
+                                    <td>Tirzepatida: 20,2% vs Semaglutida: 13,7%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="grid grid-2">
+                    <div class="card">
+                        <h3 class="card-title">Tendências de Tratamento</h3>
+                        <div style="margin-bottom: 1rem;">
+                            <h4 class="font-semibold text-gray-700">Mudança de Paradigma</h4>
+                            <p class="text-gray-600">Transição do foco exclusivo no controle glicêmico para abordagem integrada diabetes-obesidade.</p>
+                        </div>
+                        <div style="margin-bottom: 1rem;">
+                            <h4 class="font-semibold text-gray-700">Personalização</h4>
+                            <p class="text-gray-600">Escolha baseada em perfil do paciente: tirzepatida para maior perda de peso, semaglutida para controle CV.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-700">Combinações</h4>
+                            <p class="text-gray-600">Uso crescente com inibidores SGLT2 para potencializar efeitos metabólicos e cardiovasculares.</p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3 class="card-title">Particularidades Regionais</h3>
+                        <div style="margin-bottom: 1rem;">
+                            <h4 class="font-semibold text-gray-700">Brasil</h4>
+                            <ul class="list text-gray-600">
+                                <li>Alta prevalência de diabetes (7,7% população)</li>
+                                <li>Obesidade crescente (22,8% adultos)</li>
+                                <li>SUS: apenas metformina e insulina disponíveis</li>
+                                <li>Setor privado: acesso limitado por custo</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-700">Perfil do Paciente-Alvo</h4>
+                            <ul class="list text-gray-600">
+                                <li>Diabetes tipo 2 inadequadamente controlado</li>
+                                <li>Obesidade com comorbidades</li>
+                                <li>Falha em modificações do estilo de vida</li>
+                                <li>Necessidade de perda de peso significativa</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 class="card-title">Efeitos Adversos e Contraindicações</h3>
+                    <div class="grid grid-3">
+                        <div>
+                            <h4 class="font-semibold text-red-600 mb-4">Efeitos Mais Comuns</h4>
+                            <div class="border-left red" style="margin-bottom: 0.5rem;">
+                                <div class="font-semibold text-gray-700">Náusea</div>
+                                <div class="text-sm text-gray-600">Semaglutida: 44% | Tirzepatida: 18%</div>
+                            </div>
+                            <div class="border-left red" style="margin-bottom: 0.5rem;">
+                                <div class="font-semibold text-gray-700">Vômitos</div>
+                                <div class="text-sm text-gray-600">Semaglutida: 24% | Tirzepatida: 18%</div>
+                            </div>
+                            <div class="border-left red" style="margin-bottom: 0.5rem;">
+                                <div class="font-semibold text-gray-700">Diarreia</div>
+                                <div class="text-sm text-gray-600">Semaglutida: 20% | Tirzepatida: 16%</div>
+                            </div>
+                            <div class="border-left red" style="margin-bottom: 0.5rem;">
+                                <div class="font-semibold text-gray-700">Constipação</div>
+                                <div class="text-sm text-gray-600">Semaglutida: 16% | Tirzepatida: 12%</div>
+                            </div>
+                            <div class="border-left red">
+                                <div class="font-semibold text-gray-700">Dor abdominal</div>
+                                <div class="text-sm text-gray-600">Semaglutida: 12% | Tirzepatida: 10%</div>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold" style="color: #ea580c; margin-bottom: 1rem;">Efeitos Graves</h4>
+                            <ul style="list-style: none; padding: 0;">
+                                <li class="flex items-start" style="margin-bottom: 0.5rem;">
+                                    <span style="color: #ea580c; margin-right: 0.5rem;">⚠️</span>
+                                    <span class="text-gray-600">Pancreatite aguda</span>
+                                </li>
+                                <li class="flex items-start" style="margin-bottom: 0.5rem;">
+                                    <span style="color: #ea580c; margin-right: 0.5rem;">⚠️</span>
+                                    <span class="text-gray-600">Problemas da vesícula biliar</span>
+                                </li>
+                                <li class="flex items-start" style="margin-bottom: 0.5rem;">
+                                    <span style="color: #ea580c; margin-right: 0.5rem;">⚠️</span>
+                                    <span class="text-gray-600">Reações de hipersensibilidade</span>
+                                </li>
+                                <li class="flex items-start" style="margin-bottom: 0.5rem;">
+                                    <span style="color: #ea580c; margin-right: 0.5rem;">⚠️</span>
+                                    <span class="text-gray-600">Retinopatia diabética</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span style="color: #ea580c; margin-right: 0.5rem;">⚠️</span>
+                                    <span class="text-gray-600">Hipoglicemia (com sulfonilureias/insulina)</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-red-600 mb-4">Contraindicações</h4>
+                            <ul style="list-style: none; padding: 0;">
+                                <li class="flex items-start" style="margin-bottom: 0.5rem;">
+                                    <span style="color: #dc2626; margin-right: 0.5rem;">❌</span>
+                                    <span class="text-gray-600">Diabetes tipo 1</span>
+                                </li>
+                                <li class="flex items-start" style="margin-bottom: 0.5rem;">
+                                    <span style="color: #dc2626; margin-right: 0.5rem;">❌</span>
+                                    <span class="text-gray-600">Cetoacidose diabética</span>
+                                </li>
+                                <li class="flex items-start" style="margin-bottom: 0.5rem;">
+                                    <span style="color: #dc2626; margin-right: 0.5rem;">❌</span>
+                                    <span class="text-gray-600">História pessoal/familiar de carcinoma medular da tireoide</span>
+                                </li>
+                                <li class="flex items-start" style="margin-bottom: 0.5rem;">
+                                    <span style="color: #dc2626; margin-right: 0.5rem;">❌</span>
+                                    <span class="text-gray-600">Síndrome de neoplasia endócrina múltipla tipo 2</span>
+                                </li>
+                                <li class="flex items-start" style="margin-bottom: 0.5rem;">
+                                    <span style="color: #dc2626; margin-right: 0.5rem;">❌</span>
+                                    <span class="text-gray-600">Gravidez e amamentação</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span style="color: #dc2626; margin-right: 0.5rem;">❌</span>
+                                    <span class="text-gray-600">Gastroparesia severa</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Knowledge Section -->
+            <div id="knowledge" class="section">
+                <h2 class="section-title">Conhecimentos Complementares</h2>
+                
+                <div class="grid grid-2">
+                    <div class="card">
+                        <h3 class="card-title">
+                            <span class="card-icon">💰</span>
+                            Marketing Farmacêutico
+                        </h3>
+                        <div style="margin-bottom: 1rem;">
+                            <h4 class="font-semibold text-gray-700">Estratégias de Posicionamento</h4>
+                            <div class="highlight-box blue">
+                                <p><strong>Semaglutida:</strong> "Líder comprovado com perfil cardiovascular estabelecido"</p>
+                            </div>
+                            <div class="highlight-box green">
+                                <p><strong>Tirzepatida:</strong> "Nova geração - máxima eficácia em perda de peso"</p>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-700">Programas de Acesso</h4>
+                            <ul class="list text-gray-600">
+                                <li>Novo Nordisk: Programa NovoCare (até 40% desconto)</li>
+                                <li>Eli Lilly: Programa de Fidelidade Mounjaro</li>
+                                <li>Samples gratuitas para início de tratamento</li>
+                                <li>Parcerias com seguros privados</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3 class="card-title">
+                            <span class="card-icon">👥</span>
+                            Técnicas de Vendas Consultivas
+                        </h3>
+                        <div style="margin-bottom: 1rem;">
+                            <h4 class="font-semibold text-gray-700">Identificação do Perfil</h4>
+                            <div class="grid grid-2 gap-2 mt-2">
+                                <div class="bg-gray-50" style="padding: 0.5rem; border-radius: 0.25rem;">
+                                    <strong>Diabetes:</strong> HbA1c >7%, comorbidades
+                                </div>
+                                <div class="bg-gray-50" style="padding: 0.5rem; border-radius: 0.25rem;">
+                                    <strong>Obesidade:</strong> IMC >30, tentativas prévias
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-700">Argumentos Diferenciadores</h4>
+                            <ul class="list text-gray-600 text-sm">
+                                <li>Evidências head-to-head (SURPASS vs SUSTAIN)</li>
+                                <li>Experiência do paciente (frequência, tolerabilidade)</li>
+                                <li>Resultados tangíveis (% perda peso, HbA1c)</li>
+                                <li>Custo-efetividade a longo prazo</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 class="card-title">Insights de Mercado Recentes</h3>
+                    <div class="grid grid-2 gap-4">
+                        <div class="alert-box">
+                            <div class="flex items-center justify-between mb-2">
+                                <h4 class="font-semibold text-gray-700">Fiocruz-EMS Partnership</h4>
+                                <span class="badge red">Muito Alto</span>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-2">Acordo firmado para produção nacional de semaglutida e liraglutida, reduzindo dependência de importação</p>
+                            <div class="flex items-center text-xs text-gray-500">
+                                <span style="margin-right: 0.25rem;">📅</span>
+                                Agosto 2025
+                            </div>
+                        </div>
+                        <div class="alert-box">
+                            <div class="flex items-center justify-between mb-2">
+                                <h4 class="font-semibold text-gray-700">Controle ANVISA</h4>
+                                <span class="badge yellow">Médio</span>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-2">Retenção obrigatória de receitas para agonistas GLP-1 desde junho 2025</p>
+                            <div class="flex items-center text-xs text-gray-500">
+                                <span style="margin-right: 0.25rem;">📅</span>
+                                Junho 2025
+                            </div>
+                        </div>
+                        <div class="alert-box">
+                            <div class="flex items-center justify-between mb-2">
+                                <h4 class="font-semibold text-gray-700">Redução de Preços</h4>
+                                <span class="badge orange">Alto</span>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-2">Novo Nordisk reduziu preços em 20% após chegada do Mounjaro</p>
+                            <div class="flex items-center text-xs text-gray-500">
+                                <span style="margin-right: 0.25rem;">📅</span>
+                                Junho 2025
+                            </div>
+                        </div>
+                        <div class="alert-box">
+                            <div class="flex items-center justify-between mb-2">
+                                <h4 class="font-semibold text-gray-700">Quebra de Patente</h4>
+                                <span class="badge red">Muito Alto</span>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-2">Patente da semaglutida expira em 2026, permitindo genéricos</p>
+                            <div class="flex items-center text-xs text-gray-500">
+                                <span style="margin-right: 0.25rem;">📅</span>
+                                2026
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-2">
+                    <div class="card">
+                        <h3 class="card-title">Gestão de Relacionamento</h3>
+                        <div class="border-left blue" style="margin-bottom: 0.75rem;">
+                            <h4 class="font-semibold text-gray-700">Endocrinologistas</h4>
+                            <p class="text-gray-600 text-sm">Foco em dados de eficácia, estudos comparativos e guidelines internacionais</p>
+                        </div>
+                        <div class="border-left green" style="margin-bottom: 0.75rem;">
+                            <h4 class="font-semibold text-gray-700">Clínicos Gerais</h4>
+                            <p class="text-gray-600 text-sm">Ênfase em facilidade de uso, perfil de segurança e algoritmos de tratamento</p>
+                        </div>
+                        <div class="border-left purple">
+                            <h4 class="font-semibold text-gray-700">Cardiologistas</h4>
+                            <p class="text-gray-600 text-sm">Destaque para benefícios cardiovasculares e redução de fatores de risco</p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3 class="card-title">Modelos de Negócio Médico</h3>
+                        <div style="margin-bottom: 0.75rem;">
+                            <h4 class="font-semibold text-gray-700">Setor Público</h4>
+                            <ul class="list text-gray-600 text-sm">
+                                <li>Protocolos PCDT (Protocolos Clínicos)</li>
+                                <li>Judicialização crescente</li>
+                                <li>Parcerias público-privadas</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-700">Setor Privado</h4>
+                            <ul class="list text-gray-600 text-sm">
+                                <li>Value-based care</li>
+                                <li>Outcomes research</li>
+                                <li>Medicina de precisão</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Competitive Section -->
+            <div id="competitive" class="section">
+                <h2 class="section-title">Análise Competitiva</h2>
+                
+                <div class="card">
+                    <h3 class="card-title">Comparação Direta - Principais Concorrentes</h3>
+                    <div style="overflow-x: auto;">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Medicamento</th>
+                                    <th>Marca</th>
+                                    <th>Fabricante</th>
+                                    <th>Mecanismo</th>
+                                    <th>Perda de Peso</th>
+                                    <th>Preço (R$)</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="background-color: #eff6ff;">
+                                    <td class="font-semibold">Semaglutida</td>
+                                    <td>Ozempic/Wegovy</td>
+                                    <td>Novo Nordisk</td>
+                                    <td>GLP-1</td>
+                                    <td class="font-bold text-blue-600">10-17%</td>
+                                    <td>825 - 1.699</td>
+                                    <td><span class="badge green">Líder</span></td>
+                                </tr>
+                                <tr style="background-color: #f0fdf4;">
+                                    <td class="font-semibold">Tirzepatida</td>
+                                    <td>Mounjaro</td>
+                                    <td>Eli Lilly</td>
+                                    <td>GLP-1/GIP</td>
+                                    <td class="font-bold text-green-600">15-25%</td>
+                                    <td>1.135 - 4.077</td>
+                                    <td><span class="badge blue">Disruptor</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Liraglutida</td>
+                                    <td>Saxenda/Victoza</td>
+                                    <td>Novo Nordisk</td>
+                                    <td>GLP-1</td>
+                                    <td>8%</td>
+                                    <td>730-1.100</td>
+                                    <td><span class="badge gray">Concorrente</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Dulaglutida</td>
+                                    <td>Trulicity</td>
+                                    <td>Eli Lilly</td>
+                                    <td>GLP-1</td>
+                                    <td>3-5%</td>
+                                    <td>400-600</td>
+                                    <td><span class="badge gray">Concorrente</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Liraglutida</td>
+                                    <td>Olire/Lirux</td>
+                                    <td>EMS</td>
+                                    <td>GLP-1</td>
+                                    <td>8%</td>
+                                    <td>760</td>
+                                    <td><span class="badge gray">Concorrente</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="grid grid-2">
+                    <div class="card">
+                        <h3 class="card-title">Diferenciais Competitivos</h3>
+                        <div class="highlight-box blue" style="margin-bottom: 1rem;">
+                            <h4 class="font-semibold" style="color: #1e40af; margin-bottom: 0.5rem;">Semaglutida - Vantagens</h4>
+                            <ul class="list" style="color: #2563eb;">
+                                <li>Primeira no mercado - experiência clínica estabelecida</li>
+                                <li>Dados cardiovasculares robustos (SUSTAIN-6, PIONEER-6)</li>
+                                <li>Múltiplas apresentações (injetável + oral)</li>
+                                <li>Programa de acesso consolidado</li>
+                                <li>Menor custo por tratamento</li>
+                            </ul>
+                        </div>
+                        <div class="highlight-box green">
+                            <h4 class="font-semibold" style="color: #166534; margin-bottom: 0.5rem;">Tirzepatida - Vantagens</h4>
+                            <ul class="list" style="color: #16a34a;">
+                                <li>Superior em perda de peso (estudos head-to-head)</li>
+                                <li>Mecanismo dual inovador (GLP-1 + GIP)</li>
+                                <li>Menor incidência de náusea vs semaglutida</li>
+                                <li>Resultados mais rápidos e sustentados</li>
+                                <li>Potencial para novas indicações (NASH, apneia)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3 class="card-title">Estratégias da Concorrência</h3>
+                        <div style="margin-bottom: 1rem;">
+                            <h4 class="font-semibold text-gray-700">Novo Nordisk</h4>
+                            <ul class="list text-gray-600 text-sm">
+                                <li>Redução de preços em 20% (resposta ao Mounjaro)</li>
+                                <li>Investimento em educação médica continuada</li>
+                                <li>Expansão do programa NovoCare</li>
+                                <li>Parceria com influenciadores e celebridades</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-700">Eli Lilly</h4>
+                            <ul class="list text-gray-600 text-sm">
+                                <li>Posicionamento premium baseado em eficácia</li>
+                                <li>Investimento pesado em estudos comparativos</li>
+                                <li>Parcerias estratégicas com KOLs</li>
+                                <li>Pipeline robusto (retatrutida - triplo agonista)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 class="card-title">Pontos Fracos a Serem Explorados</h3>
+                    <div class="grid grid-3">
+                        <div class="border-left red">
+                            <h4 class="font-semibold text-red-600">Concorrentes Diretos</h4>
+                            <ul class="list text-gray-600 text-sm">
+                                <li>Liraglutida: eficácia inferior, aplicação diária</li>
+                                <li>Dulaglutida: menor perda de peso</li>
+                                <li>EMS Olire: marca nova, eficácia limitada</li>
+                            </ul>
+                        </div>
+                        <div class="border-left" style="border-left-color: #ea580c;">
+                            <h4 class="font-semibold" style="color: #ea580c;">Barreiras de Entrada</h4>
+                            <ul class="list text-gray-600 text-sm">
+                                <li>Alto custo de desenvolvimento</li>
+                                <li>Patentes até 2035 (tirzepatida)</li>
+                                <li>Complexidade regulatória</li>
+                                <li>Necessidade de estudos longos</li>
+                            </ul>
+                        </div>
+                        <div class="border-left green">
+                            <h4 class="font-semibold text-green-600">Oportunidades</h4>
+                            <ul class="list text-gray-600 text-sm">
+                                <li>Mercado sub-atendido no SUS</li>
+                                <li>Crescimento da obesidade</li>
+                                <li>Medicina preventiva</li>
+                                <li>Telemedicina e DTC</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 class="card-title">Objeções Comparativas e Respostas</h3>
+                    <div style="margin-bottom: 1rem;">
+                        <div class="alert-box">
+                            <div class="flex items-start">
+                                <span style="color: #dc2626; margin-right: 0.75rem; margin-top: 0.125rem;">⚠️</span>
+                                <div style="flex: 1;">
+                                    <h4 class="font-semibold text-gray-700 mb-2">Objeção: Tirzepatida é muito cara comparada à semaglutida</h4>
+                                    <div class="flex items-start">
+                                        <span style="color: #16a34a; margin-right: 0.75rem; margin-top: 0.125rem;">✅</span>
+                                        <p class="text-gray-600 text-sm"><strong>Resposta:</strong> O custo deve ser avaliado por resultado obtido. Tirzepatida proporciona até 47% mais perda de peso, podendo reduzir tempo de tratamento e comorbidades associadas.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <div class="alert-box">
+                            <div class="flex items-start">
+                                <span style="color: #dc2626; margin-right: 0.75rem; margin-top: 0.125rem;">⚠️</span>
+                                <div style="flex: 1;">
+                                    <h4 class="font-semibold text-gray-700 mb-2">Objeção: Semaglutida tem mais dados de segurança cardiovascular</h4>
+                                    <div class="flex items-start">
+                                        <span style="color: #16a34a; margin-right: 0.75rem; margin-top: 0.125rem;">✅</span>
+                                        <p class="text-gray-600 text-sm"><strong>Resposta:</strong> Verdadeiro, mas tirzepatida demonstra perfil metabólico superior com melhor controle de triglicerídeos, pressão arterial e peso - fatores de risco CV importantes.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="alert-box">
+                            <div class="flex items-start">
+                                <span style="color: #dc2626; margin-right: 0.75rem; margin-top: 0.125rem;">⚠️</span>
+                                <div style="flex: 1;">
+                                    <h4 class="font-semibold text-gray-700 mb-2">Objeção: Liraglutida nacional (EMS) oferece custo-benefício melhor</h4>
+                                    <div class="flex items-start">
+                                        <span style="color: #16a34a; margin-right: 0.75rem; margin-top: 0.125rem;">✅</span>
+                                        <p class="text-gray-600 text-sm"><strong>Resposta:</strong> Liraglutida requer aplicação diária vs semanal, com eficácia limitada (8% vs 17-25%). Compliance e resultados favorecem agonistas GLP-1 de nova geração.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Initialize the current date
+        document.getElementById('currentDate').textContent = new Date().toLocaleDateString('pt-BR');
+        
+        // Navigation functionality
+        const navButtons = document.querySelectorAll('.nav-button');
+        const sections = document.querySelectorAll('.section');
+        
+        navButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const targetSection = button.getAttribute('data-section');
+                
+                // Remove active class from all buttons and sections
+                navButtons.forEach(btn => btn.classList.remove('active'));
+                sections.forEach(section => section.classList.remove('active'));
+                
+                // Add active class to clicked button and corresponding section
+                button.classList.add('active');
+                document.getElementById(targetSection).classList.add('active');
+            });
+        });
+        
+        // Drug selector functionality
+        const drugSelector = document.getElementById('drugSelector');
+        const drugCards = document.querySelectorAll('[data-drug]');
+        
+        if (drugSelector) {
+            drugSelector.addEventListener('change', (e) => {
+                const selectedDrug = e.target.value;
+                
+                drugCards.forEach(card => {
+                    const drugType = card.getAttribute('data-drug');
+                    
+                    if (selectedDrug === 'both' || selectedDrug === drugType) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        }
+        
+        // Search functionality
+        const searchInput = document.getElementById('searchInput');
+        
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const allCards = document.querySelectorAll('.card');
+            
+            allCards.forEach(card => {
+                const cardText = card.textContent.toLowerCase();
+                if (cardText.includes(searchTerm) || searchTerm === '') {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+        
+        // Print functionality for reports
+        function printReport() {
+            window.print();
+        }
+        
+        // Export functionality (basic CSV export for tables)
+        function exportTableData(tableId, filename) {
+            const table = document.getElementById(tableId);
+            if (!table) return;
+            
+            const rows = table.querySelectorAll('tr');
+            let csvContent = '';
+            
+            rows.forEach(row => {
+                const cells = row.querySelectorAll('th, td');
+                const rowData = Array.from(cells).map(cell => 
+                    '"' + cell.textContent.replace(/"/g, '""') + '"'
+                ).join(',');
+                csvContent += rowData + '\n';
+            });
+            
+            const blob = new Blob([csvContent], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename + '.csv';
+            a.click();
+            window.URL.revokeObjectURL(url);
+        }
+        
+        // Mobile menu toggle (if needed)
+        function toggleMobileMenu() {
+            const sidebar = document.querySelector('.sidebar');
+            const content = document.querySelector('.content');
+            
+            if (window.innerWidth <= 768) {
+                sidebar.classList.toggle('hidden');
+            }
+        }
+        
+        // Responsive handling
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                document.querySelector('.sidebar').classList.remove('hidden');
+            }
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Analytics tracking (placeholder for real implementation)
+        function trackEvent(category, action, label) {
+            console.log('Analytics Event:', category, action, label);
+            // Implement your analytics tracking here
+        }
+        
+        // Track navigation clicks
+        navButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                trackEvent('Navigation', 'Section Change', button.getAttribute('data-section'));
+            });
+        });
+        
+        // Track search usage
+        searchInput.addEventListener('input', () => {
+            trackEvent('Search', 'Query', searchInput.value);
+        });
+    </script>
+</body>
+</html>
